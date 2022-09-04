@@ -5,7 +5,11 @@ pipeline{
             steps{
                 checkout scm
                 echo 'building3'
-                def customImage = docker.build("noborepo:letsts")
+                node {
+                    checkout scm
+                    def customImage = docker.build("my-image:${env.BUILD_ID}")
+                }
+
                 echo 'built'
             }
         }
