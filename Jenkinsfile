@@ -2,7 +2,6 @@ pipeline{
     agent { dockerfile {
         filename 'Dockerfile'
         dir 'node'
-        label 'my-defined-label'
     } }
     stages {
         stage("build"){
