@@ -4,7 +4,6 @@ pipeline{
         stage("build"){
             steps{
                 echo 'building3'
-                def customImage = docker.build("noborepo:letsts")
                 echo 'built'
             }
         }
