@@ -11,7 +11,7 @@ node {
             echo 'Hello from PR'
             def workspace = pwd()
             def nodeImage = docker.build("examplepipe", "./node/")
-            nodeImage.withRun('-v '+&{workspace}+':/usr/src/app') {c ->
+            nodeImage.withRun('-v &{workspace}:/usr/src/app') {c ->
                 sh "npm install"
                 sh "npm test"
             }
