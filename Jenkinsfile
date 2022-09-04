@@ -3,7 +3,7 @@ pipeline{
     stages {
         stage("build"){
             steps{
-                echo 'building2'
+                echo 'building3'
                 def customImage = docker.build("noborepo:letsts")
                 echo 'built'
             }
