@@ -1,5 +1,5 @@
 node {
     checkout scm
-    def customImage = docker.build(env.JOB_BASE_NAME, "./node/Dockerfile")
+    def customImage = docker.build("examplepipe", "./node/Dockerfile")
 
 }
