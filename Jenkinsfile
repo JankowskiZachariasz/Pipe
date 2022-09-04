@@ -10,8 +10,9 @@ node {
         else {
             echo 'Hello from PR'
             def nodeImage = docker.build("examplepipe", "./node/")
-            nodeImage.inside {
-                sh 'npm test'
+            nodeImage.withRun('-v ./:/usr/src/app') {c ->
+                sh "npm install"
+                sh "npm test"
             }
         }
     }
