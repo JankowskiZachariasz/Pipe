@@ -11,8 +11,10 @@ node {
             echo 'Hello from PR'
             def workspace = WORKSPACE
             def nodeImage = docker.build("examplepipe", "--no-cache ./node/")
-            nodeImage.withRun() {c ->
-                sh "npm run test"
+            nodeImage.withRun('-p 3306:3306') {c ->
+                docker.image('mysql:5').inside("--link ${c.id}:db") {
+                    sh "npm run test"
+                }
             }
         }
     }
