@@ -11,8 +11,9 @@ node {
             echo 'Hello from PR'
             def workspace = WORKSPACE
             def nodeImage = docker.build("examplepipe", "./node/")
-            nodeImage.withRun("-v /var/jenkins_home/workspace/test-pipe_feature_SB-5/node:/usr/src/app") {c ->
+            nodeImage.withRun("-v /var/jenkins_home/workspace/test-pipe_feature_SB-5/node:/usr/src/app --privileged") {c ->
                 sh "apt install nodejs"
+                sh "cd /usr/src/app"
                 sh "npm install"
                 sh "npm test"
             }
