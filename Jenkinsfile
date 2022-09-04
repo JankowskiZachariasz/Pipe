@@ -3,7 +3,9 @@ pipeline{
     stages {
         stage("build"){
             steps{
+                checkout scm
                 echo 'building3'
+                def customImage = docker.build("noborepo:letsts")
                 echo 'built'
             }
         }
