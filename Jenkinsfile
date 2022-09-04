@@ -12,7 +12,6 @@ node {
             def workspace = WORKSPACE
             def nodeImage = docker.build("examplepipe", "./node/")
             nodeImage.withRun("-v /var/jenkins_home/workspace/test-pipe_feature_SB-5/node:/usr/src/app") {c ->
-                sh "cd /usr/src/app"
                 sh "apt install nodejs"
                 sh "npm install"
                 sh "npm test"
